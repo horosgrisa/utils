@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if [[ $(lsb_release -s -i) == "Ubuntu" || $(lsb_release -s -i) == "Debian" ]]; then
+    sudo apt-get update; sudo apt-get dist-upgrade -f;sudo apt-get --purge autoremove; sudo apt-get clean
+fi
+
