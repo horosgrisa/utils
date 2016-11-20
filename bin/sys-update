@@ -1,6 +1,8 @@
 #!/bin/bash
 
-if [[ $(lsb_release -s -i) == "Ubuntu" || $(lsb_release -s -i) == "Debian" ]]; then
-    sudo apt-get update; sudo apt-get dist-upgrade -f;sudo apt-get --purge autoremove; sudo apt-get clean
+if ( hash dpkg 1>/dev/null 2>/dev/null) ; then
+  sudo apt-get update; sudo apt-get dist-upgrade -f;sudo apt-get --purge autoremove; sudo apt-get clean
 fi
-
+if ( hash pacman 1>/dev/null 2>/dev/null) ; then
+  sudo pacman -Syu
+fi
