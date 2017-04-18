@@ -1,8 +1,13 @@
 #!/bin/bash
-
-if ( hash dpkg 1>/dev/null 2>/dev/null) ; then
+if ( hash apt 1>/dev/null 2>/dev/null) ; then
+  sudo apt update; sudo apt full-upgrade
+  exit 0
+fi
+if ( hash apt-get 1>/dev/null 2>/dev/null) ; then
   sudo apt-get update; sudo apt-get dist-upgrade -f;sudo apt-get --purge autoremove; sudo apt-get clean
+  exit 0
 fi
 if ( hash pacman 1>/dev/null 2>/dev/null) ; then
   sudo pacman -Syu
+  exit 0
 fi
