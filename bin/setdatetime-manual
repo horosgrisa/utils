@@ -1,0 +1,13 @@
+date="$1"
+n=0
+for file in *.webp; do
+
+n=$(( $n + 1 ))
+echo ---------------
+echo $file $n 
+
+hour=$(( $n / 60 + 12 ))
+minutes=$(( $n % 60 ))
+exiv2 -M"add Exif.Photo.DateTimeOriginal Ascii '$date $hour:$minutes:01'" "$file"
+
+done

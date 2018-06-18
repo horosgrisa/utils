@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+
+for i in *.webp; do
+echo $i
+
+photo_date=$(basename "$i" ".webp" | tr ' ' '-' | egrep -o -m1 [0-9]\{4\}\([-_:\.\ ]?[0-9]\)\{10\})
+
+echo $photo_date
+photo_date=$(echo "$photo_date" | tr -d "\_\-\:\.\ " | sed 's/\([0-9]\{4\}\)\([0-9]\{2\}\)\([0-9]\{2\}\)\([0-9]\{2\}\)\([0-9]\{2\}\)/\1:\2:\3 \4:\5:/')
+
+echo $photo_date
+exiv2 -M"add Exif.Photo.DateTimeOriginal Ascii '$photo_date'" "$i"
+
+
+
+echo -----------------
+done
