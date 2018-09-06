@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-find -name '*.jpg' -print0 | xargs -0 -I{} -P 8 cwebp -metadata all {} -q 75 -o {}.webp
+find -name '*.jpg' -print0 | xargs -0 -I{} -P 8 cwebp -metadata all {} -q 85 -o {}.webp
