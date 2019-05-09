@@ -1,3 +1,9 @@
 #!/usr/bin/env bash
 
-find -name '*.jpg' -print0 | xargs -0 -I{} -P 8 cwebp -metadata all {} -q 80 -o {}.webp
+find -name '*.jpg' -print0 | xargs -0 -I{} -P 2 convert -define webp:method=6,image-hint=photo,thread-level=4 -quality 75 -auto-orient {} {}.webp
+
+for file in *.jpg.webp; do
+ mv "$file" "$(basename "$file" .jpg.webp).webp"
+done
+
+
